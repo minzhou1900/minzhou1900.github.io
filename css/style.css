@@ -746,3 +746,41 @@ button:focus,
     text-align : center;
     top        : 65%;
     }
+
+	/* ========== 个人主页专用：限制内容宽度、左右留白 ========== */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* 论文列表优化，兼容原有li align="justify" */
+.pub-list {
+    padding-left: 1.4em;
+    line-height: 1.7;
+    margin-top: 12px;
+}
+
+/* 个人简介区块，避免图片挤压 */
+.profile-section {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.profile-img img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* 移动端适配，小屏幕堆叠 */
+@media (max-width:768px) {
+    .profile-section {
+        flex-direction: column;
+    }
+    .profile-img img {
+        max-width: 160px;
+    }
+}
