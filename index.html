@@ -1,98 +1,255 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!-- web-fonts -->
-<link href='https://fonts.googleapis.com/css?family=Roboto:210,300,400,700,500' rel='stylesheet' type='text/css'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Min Zhou — Homepage</title>
+<style>
+  :root{
+    --navy-dark: #143056;
+    --navy:      #1a3c6e;
+    --accent:    #0b5c9e;
+    --text:      #333333;
+    --muted:     #6b7280;
+    --line:      #e6e8eb;
+    --bg:        #f5f6f8;
+    --card:      #ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    font-size:15.5px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{color:var(--navy);border-bottom:1px solid var(--accent);}
 
-<!-- web-fonts -->
-<link href='https://fonts.googleapis.com/css?family=Roboto:210,300,400,700,500' rel='stylesheet' type='text/css'>
+  .container{
+    max-width:960px;
+    margin:36px auto;
+    padding:46px 56px;
+    background:var(--card);
+    border-radius:10px;
+    box-shadow:0 2px 18px rgba(20,40,90,.06);
+  }
 
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+  nav.topnav{
+    position:sticky;top:0;z-index:10;
+    background:rgba(255,255,255,.97);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(6px);
+  }
+  nav.topnav .inner{
+    max-width:960px;margin:0 auto;padding:0 24px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:2px 20px;
+  }
+  nav.topnav a{
+    display:inline-block;padding:14px 2px;font-size:14px;
+    color:var(--navy);font-weight:600;letter-spacing:.04em;border-bottom:none;
+  }
+  nav.topnav a:hover{color:var(--accent);border-bottom:1px solid var(--accent);}
+  nav.topnav a.brand{
+    font-size:16px;font-weight:700;color:var(--navy-dark);margin-right:auto;
+  }
 
-<!-- Style CSS -->
-<link href="css/style.css" rel="stylesheet">	
-<head>
+  header.profile{
+    display:flex;gap:38px;align-items:flex-start;
+    padding-bottom:34px;border-bottom:1px solid var(--line);
+  }
+  header.profile .avatar{flex:0 0 auto;text-align:center;}
+  header.profile .avatar img{
+    width:172px;height:auto;border-radius:6px;
+    box-shadow:0 4px 14px rgba(20,40,90,.12);
+  }
+  header.profile .info{flex:1;min-width:0;}
+  header.profile h1{
+    font-size:32px;color:var(--navy-dark);font-weight:700;
+    line-height:1.25;letter-spacing:.02em;
+  }
+  header.profile .role{font-size:16px;color:var(--muted);margin:8px 0 18px;}
+  .contact-line{font-size:14px;color:var(--muted);margin-top:22px;}
+  .contact-line b{color:var(--text);font-weight:600;}
+  .contact-line a{margin-right:8px;}
 
-<body class="is-preload">
+  section{padding:34px 0 6px;scroll-margin-top:64px;}
+  h2.sec{
+    font-size:20px;color:var(--navy);font-weight:700;text-transform:uppercase;
+    letter-spacing:.08em;padding-bottom:10px;margin-bottom:20px;
+    border-bottom:2px solid var(--navy);display:inline-block;
+  }
 
-	<!-- Header -->
-		<div id="header">
+  ul.news{list-style:none;}
+  ul.news li{padding:9px 0;border-bottom:1px dashed var(--line);text-align:justify;}
+  ul.news li:last-child{border-bottom:none;}
+  .news-time{font-weight:700;color:var(--navy);margin-right:10px;white-space:nowrap;}
 
-			<div class="top">
+  .pub-group h3{
+    font-size:17px;color:var(--navy);font-weight:700;
+    margin:20px 0 8px;padding-left:12px;border-left:4px solid var(--accent);
+  }
+  ol.papers{margin-left:0;padding-left:22px;}
+  ol.papers li{padding:9px 0 9px 4px;text-align:justify;}
+  ol.papers b{color:var(--navy-dark);}
+  .venue{font-style:italic;color:var(--navy-dark);}
+  .pdf{font-size:13px;font-weight:700;color:var(--accent);}
 
-				<!-- Logo -->
-				<div id="logo">
-					
-					<!-- <p><a href="resume-EN.pdf" target="_blank">English CV</a> | <a href="resume-CH.pdf" target="_blank">中文简历</a></p> -->
-				</div>
+  section#projects ul, section#links ul{list-style:square;margin-left:22px;padding:4px 0;}
 
-				<!-- Nav -->
-       	<!--
-				<nav id="nav">
-					<ul>
-					<li><a href="./index.html" title="Home">Home</a></li>
-					<li><a href="./index.html#news" title="News">News</a></li>
-					<li><a href="./index.html#pub" title="Papers">Publications</a></li>
-					<li><a href="./index.html#activities" title=" Activities">Activities</a></li>
-					<li><a href="./index.html#projects" title="Projects">Projects</a></li>
-					<li><a href="./index.html#people" title="Collaborations">Links</a></li>
-					</ul>
-				</nav>
+  footer{
+    text-align:center;color:#9aa3af;font-size:13px;
+    padding:26px 0 2px;border-top:1px solid var(--line);margin-top:30px;
+  }
 
-			</div>
+  @media (max-width:760px){
+    .container{margin:16px auto;padding:34px 22px;border-radius:8px;}
+    header.profile{flex-direction:column;align-items:center;text-align:center;gap:20px;}
+    header.profile .avatar{order:-1;}
+    header.profile .avatar img{width:150px;}
+    header.profile h1{font-size:26px;}
+    nav.topnav .inner{padding:0 16px;gap:0 16px;}
+    nav.topnav a{padding:12px 0;font-size:13.5px;}
+    h2.sec{font-size:18px;display:block;}
+    .news-time{display:block;margin-bottom:2px;white-space:normal;}
+  }
+  @media (max-width:420px){
+    .container{padding:26px 16px;margin:10px auto;}
+    ol.papers{padding-left:18px;}
+  }
+</style>
+</head>
+<body>
 
-			<div class="bottom">
-				<ul class="icons">
-					<!--
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-					-->
-				</ul>
-			</div>
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="#top">Min Zhou</a>
+    <a href="#top">About</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#activities">Activities</a>
+    <a href="#projects">Projects</a>
+    <a href="#links">Links</a>
+  </div>
+</nav>
 
-		</div>
+<div class="container" id="top">
 
-<!-- Nav -->
+  <header class="profile" id="about">
+    <div class="avatar"><img src="./images/zm.jpg" alt="Min Zhou"></div>
+    <div class="info">
+      <h1>Min Zhou</h1>
+      <div class="role">Principal Researcher &middot; Huawei Technologies/ <a href="https://www.yinwang.com/cn/" target="_blank" rel="noopener"引望</a> </div>
+      <p>
+       I received the B.S. degree in Automation from the University of Science and Technology of China, and the Ph.D. degree from
+        the Industrial Systems Engineering and Management Department, National University
+        of Singapore. I worked on pattern mining and machine learning,
+        and their applications in sequence and graph data and now focus on Continuous Data Cycle via/for Multimodal Foundation Models . I am also passionate about
+        music, dance and various sports, e.g., diving, hiking and badminton.
+      </p>
+      <div class="contact-line">
+        <div><b>Contact:</b>&nbsp;&nbsp;zhoum1900@163.com</div>
+        <div style="margin-top:6px;">
+          <b>Research:</b>&nbsp;&nbsp;
+          <a href="https://scholar.google.com/citations?user=P8WYyYIAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="#">ORCID</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-	<!--
-	      <nav id="nav">
-					<ul>
-<ol id="nav">
-<li><a href="./index.html" title="Home">Home</a></li>
-<li><a href="./index.html#news" title="News">News</a></li>
-<li><a href="./index.html#pub" title="Papers">Publications</a></li>
-<li><a href="./index.html#activities" title=" Activities">Activities</a></li>
-<li><a href="./index.html#projects" title="Projects">Projects</a></li>
-<li><a href="./index.html#people" title="Collaborations">Links</a></li>
-</ol>
--->
-	
-<div id="content">
-<div>
-<table width="100%" align="left">
-<tr valign="top">
-<td width="22%" align="middle">
-</br>
-<img src="./images/zm.jpg" alt="Photo" align="top" style="width:60%;max-width:80%" /><br />
-<!-- <strong> -->
-Please feel free to drop me an email for some discussion or collaboration.
-<!-- </strong> -->
-</td>
-<td width="60%" vertical-align="top" align='left'>
-<!--<a  class="body_anchor" name="about"></a>-->
-<!-- <h2 class="title" style="text-align:left;">About</h2> -->
-<div  style="display:block;">
-<p>
-<span class="about">
-    I am a principle researcher at Huawei. I received the B.S. degree in Automation from the University of Science and Technology of China, and the Ph.D. degree from Industrial Systems Engineering and Management Department, National University of Singapore, respectively. My research interests include pattern mining and machine learning, and their applications in multimodal data. I am also possoniate in music, dance and various sports, e.g., diving, hiking &amp badminton.
-    <br />
-    <h3 style="margin-bottom:-0.6em"></h3>
-    <span style="font-weight:normal;color:#707070">Contact:</span> &nbsp&nbsp&nbsp&nbsp&nbsp  zhoum1900@163.com
-   <!-- <img src="./images/gmail.png" alt="Min&#39;s email" align="top" style="width:33%;max-width:100%" />-->
-    
+  <section id="news">
+    <h2 class="sec">News</h2>
+    <ul class="news">
+	  <li><span class="news-time">Oct. 2024</span> We will organize <a href="https://hwcloud-ras.github.io/SmartMem.github.io/" target="_blank" rel="noopener">Failure Prediction Competition and Workhsp</a> on Webconf 2025.</li>
+	   li><span class="news-time">Nov. 2023</span> We will give a Tutorial on <a href=https://hwcloud-ras.github.io/HW_RAS-tutorial-HPCA-2025.github.io/" target="_blank" rel="noopener">Hardware Failure Prediction for Cloud Service Reliabilityg</a> on HCPA 2025.</li>
+      <li><span class="news-time">Apr. 2022</span> We will give a Tutorial on <a href="https://hyperbolicgraphlearning.github.io/" target="_blank" rel="noopener">Hyperbolic Representation Learning</a> at ECML-PKDD 2022.</li>
+      <li><span class="news-time">Apr. 2022</span> 1 dataset paper on the hierarchical network is accepted by GBL@Webconf 2022.</li>
+      <li><span class="news-time">Mar. 2022</span> 1 paper on link prediction is accepted by SIGIR 2022.</li>
+      <li><span class="news-time">Jan. 2022</span> 1 paper on Hyperbolic Collaborative Filter is accepted by Webconf 2022.</li>
+      <li><span class="news-time">Nov. 2021</span> 1 paper on graph pattern mining is accepted by ICDE 2022.</li>
+      <li><span class="news-time">Nov. 2021</span> 1 paper on hyperbolic contrastive learning is accepted by SSL@Neurips 2021.</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2 class="sec">Publications</h2>
+
+    <div class="pub-group">
+      <h3>Conference</h3>
+      <ol class="papers">
+        <li>W. Qin, W. Bao, J. Wang, <b>M. Zhou</b>. Double Queue for Constrained Online Convex Optimization: Bridging the Best-of-Two-Worlds Constraint Violations. <span class="venue">INFOCOM</span>, 2026. <a class="pdf" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11571325">[PDF]</a></li>
+        <li>L. Yan, S. Zhang, B. Li, <b>M. Zhou</b>, Z. Huang. <span class="venue">NeurIPS</span>, 2025. <a class="pdf" href="#">[PDF]</a></li>
+        <li>H. Xie, <b>M. Zhou</b>, Q. Yu, J. Yu, Z. Sheng, H. Xie, D. Lian. <span class="venue">KDD</span>, 2025. <a class="pdf" href="#">[PDF]</a></li>
+        <li>H. Qiao, S. Feng, <b>M. Zhou</b>, W. T. Li, F. Li. <span class="venue">Companion Proceedings of the ACM on Web Conference</span>, 2025, 1830–1837. <a class="pdf" href="#">[PDF]</a></li>
+        <li><b>M. Zhou</b>, H. Xie, Q. Yu, J. Yu, Z. Sheng. <span class="venue">Companion Proceedings of the ACM on Web Conference</span>, 2025, 3003–3007. <a class="pdf" href="#">[PDF]</a></li>
+        <li>Q. Yu, <b>M. Zhou</b>, Z. Shen. <span class="venue">HPCA</span>, 2025. <a class="pdf" href="#">[PDF]</a></li>
+        <li>S. Zhang, Y. Zhang, B. Li, W. Yang, <b>M. Zhou</b>, Z. Huang. <span class="venue">Neural Networks</span> 183, 106931. <a class="pdf" href="#">[PDF]</a></li>
+        <li>Z. Guo, Q. Sun, H. Yuan, X. Fu, <b>M. Zhou</b>, Y. Gao, J. Li. <span class="venue">AAAI</span>, 2025. <a class="pdf" href="#">[PDF]</a></li>
+        <li>J. Han, S. Feng, <b>M. Zhou</b>, X. Zhang, Y. S. Ong, X. Li. <span class="venue">ECML-PKDD</span>, 2024, 284–300. <a class="pdf" href="#">[PDF]</a></li>
+        <li>T. Yang, J. Meng, <b>M. Zhou</b>, Y. Yang, Y. Wang, X. Li, Y. Tong. <span class="venue">CIKM</span>, 2024. <a class="pdf" href="#">[PDF]</a></li>
+        <li>C. Wu, D. Lian, Y. Ge, <b>M. Zhou</b>, E. Chen. <span class="venue">ACM Transactions on Knowledge Discovery from Data</span> 18 (7), 1–27. <a class="pdf" href="#">[PDF]</a></li>
+        <li>K. Li, T. Yang, <b>M. Zhou</b>, J. Meng, S. Wang, Y. Wu, B. Tan, H. Song, L. Pan, F. Yu, et al. <span class="venue">KDD</span>, 2024. <a class="pdf" href="#">[PDF]</a></li>
+        <li>Q. Yu, W. Zhang, <b>M. Zhou</b>, J. Yu, Z. Sheng, J. Bogatinovski, J. Cardoso, O. Kao. <span class="venue">DSN</span>, 2024. <a class="pdf" href="#">[PDF]</a></li>
+        <li><b>M. Zhou</b>, B. Li, S. Zhang, M. Yang, D. Lian, Z. Huang. BSAL: A Framework of Bi-component Structure and Attribute Learning for Link Prediction. <span class="venue">SIGIR</span>, 2022. <a class="pdf" href="https://arxiv.org/pdf/2204.09508">[PDF]</a></li>
+        <li><b>M. Zhou</b>, B. Li, M. Yang, L. Pan. TeleGraph: A Benchmark Dataset for Hierarchical Link Prediction. <span class="venue">GLB@Webconf</span>, 2022.</li>
+        <li>M. Yang, <b>M. Zhou</b>, et al. HRCF: Enhanced Collaborative Filter via Hyperbolic Geometric Regularization. <span class="venue">Webconf</span>, 2022.</li>
+        <li>J. Liu, <b>M. Zhou</b>, et al. Discovering Representation Attribute-stars via Minimum Description Length. <span class="venue">ICDE</span>, 2022.</li>
+        <li>J. Liu, M. Yang, <b>M. Zhou</b>, et al. Enhancing Hyperbolic Graph Embeddings via Contrastive Learning. <span class="venue">SSL@Neurips</span>, 2021.</li>
+        <li>M. Yang, <b>M. Zhou</b>, et al. Discrete-time Temporal Network Embedding via Implicit Hierarchical Learning. <span class="venue">KDD</span>, 2021.</li>
+        <li>Z. Huang, S. Zhang, C. Xi, T. Liu, <b>M. Zhou</b>. Scaling Up Graph Neural Networks via Graph Coarsening. <span class="venue">KDD</span>, 2021. <a class="pdf" href="https://arxiv.org/abs/2106.05150">[PDF]</a></li>
+      </ol>
+    </div>
+
+    <div class="pub-group">
+      <h3>Journal</h3>
+      <ol class="papers">
+        <li>J. Liu, F. Philippe, <b>M. Zhou</b>, G. He. Discovering Compressing Stars in Attributed Graphs. <span class="venue">Information Sciences</span>, 2022.</li>
+        <li>F.-V. Philippe, et al., <b>M. Zhou</b>, et al. A survey of pattern mining in dynamic graphs. <span class="venue">Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery</span>, 2020.</li>
+        <li>J. Hu, <b>M. Zhou</b>, X. Li, Z. Xu. Online Model Regression for Nonlinear Time-varying Manufacturing Systems. <span class="venue">Automatica</span>, 2016.</li>
+        <li><b>M. Zhou</b>, T. N. Goh. Iterative Designed Experiment Analysis (IDEA). <span class="venue">Quality and Reliability Engineering International</span>, 2016.</li>
+        <li><b>M. Zhou</b>, T. N. Goh. Effects of Model Accuracy on Residual Control Charts. <span class="venue">Quality and Reliability Engineering International</span>, 2015.</li>
+      </ol>
+    </div>
+
+    <div class="pub-group">
+      <h3>Manuscript</h3>
+      <ol class="papers">
+        <li>M. Yang, <b>M. Zhou</b>, et al. Hyperbolic Graph Representation Learning: Methods and Applications. <a class="pdf" href="https://arxiv.org/pdf/2202.13852.pdf">arXiv</a>, 2022.</li>
+        <li>M. Klander, <b>M. Zhou</b>, et al. Spatio-Temporal Hybrid Graph Convolutional Network for Traffic Forecasting in Telecommunication Networks. <a class="pdf" href="https://arxiv.org/pdf/2009.09849.pdf">arXiv</a>, 2020.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="activities">
+    <h2 class="sec">Activities</h2>
+    <ul class="news">
+      <li>Section Chair, DataFun GNN Summit 2022.</li>
+      <li>Co-organizer, MLiSE (Machine Learning for System Engineering) Workshop @ ECML-PKDD 2021.</li>
+      <li>Mentor, SDSC 6002 Research Projects for Data Science, City University of Hong Kong, Winter 2019, 2020.</li>
+      <li>Reviewer @ ICML 2022, KDD 2022 and ECML-PKDD 2022, 2021.</li>
+      <li>Technical committee member and Session Chair @ Asian Network for Quality, Winter 2014.</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2 class="sec">Projects</h2>
+    <ul><li>TBA</li></ul>
+  </section>
+
+  <section id="links">
+    <h2 class="sec">Links</h2>
+    <ul><li>TBA</li></ul>
+  </section>
+
+  <footer>&copy; 2026 Min Zhou &middot; Hosted on GitHub Pages</footer>
+
+</div>
+
+</body>
+</html>
     <br><span style="font-weight:normal;color:#707070">Links:</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://scholar.google.com/citations?user=P8WYyYIAAAAJ&hl=zh-CN">Google Scholar</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#">ORCID</a><br />
 </span>
 </p>
